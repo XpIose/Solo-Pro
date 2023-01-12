@@ -45,6 +45,7 @@ button {
     margin-left: 10%;
     margin-right: 10%;
     box-shadow: 0px 4px 10px #444;
+    height: fit-content;
     /* height: 20px; */
 }
 
@@ -56,10 +57,23 @@ button {
 }
 
 .msg {
-    height: 40px;
+    /* resize: horizontal; */
+    /* height: 40px;
     width: 200px;
-    font-size: larger;
+    font-size: larger; */
+    border-radius: 15px;
+    background-color: #999;
+    border: 1px solid #444;
+    /* border-color: #444; */
 }
+
+/* .msg:active {
+    width: auto;   
+}
+
+.msg:focus {
+    min-width: 200px;
+} */
 
 input {
     background-color: #999;
@@ -71,3 +85,28 @@ input {
     height: 20px;
     width: 375px;
 }
+
+.msg {
+    /* border: 1px solid #ccc; */
+    font-family: inherit;
+    font-size: inherit;
+    padding: 1px 6px;
+  }
+  
+  
+  /*  .width-machine {
+    padding: 0 1rem;
+  } */
+  
+  .msg {
+    display: block;
+    width: 300px;
+    overflow: hidden;
+    resize: both;
+    min-height: 40px;
+    line-height: 20px;
+  }
+  
+  .msg[contenteditable]:empty::before {
+    content: "New Poster";
+  }

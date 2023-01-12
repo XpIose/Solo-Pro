@@ -27,8 +27,8 @@ class App extends Component {
 
 
     testFunc = () => {
-        let msg = document.getElementById('msg').value
-        // console.log(msg)
+        let msg = document.getElementById('msg').innerHTML
+        console.log('MESSAGE: ', msg)
         let send = { input: msg }
         fetch('/api/post', { 
             method: 'POST',
