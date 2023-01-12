@@ -22,21 +22,38 @@ class App extends Component {
     like() {
         //ping server to update likes
     }
+
+
+
+
     testFunc = () => {
+        let msg = document.getElementById('msg').value
+        // console.log(msg)
+        let send = { input: msg }
         fetch('/api/post', { 
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({}),
+            body: JSON.stringify(send),
         })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data)
-            // this.setState({ postData: data })
+        fetch('/api')
+        .then((res) => res.json())
+        .then((data) => {
+            // console.log(data)
+            this.setState({ postData: data })
         })
+        .catch(err => console.log(err))
+        // .then(res => res.json())
+        // .then(data => {
+        //     console.log('testfunc: ', data)
+        //     this.setState({ postData: data })
+        // })
         console.log('message posted');
     }
+
+
+
 
     render() {
         return (

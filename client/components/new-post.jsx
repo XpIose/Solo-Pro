@@ -9,8 +9,8 @@ class WritePost extends Component {
     render() {
         return(
             <div className='postId'>
-                <input type="text" className='msg'></input>
-                <button id="send" onClick={this.props.testFunc}>Post</button>
+                <input type="text" id="msg" className='msg'></input>
+                <button id="send" className='send' onClick={this.props.testFunc}>Post</button>
             </div>
         )
     }

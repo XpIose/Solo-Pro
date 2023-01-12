@@ -24,22 +24,19 @@ controller.getPosts = (req, res, next) => {
 
 
 controller.addPost = (req, res, next) => {
-    //code
-    let name;
-    let like;
-    let input;
-    let date;
-    console.log(req.body);
+
+    let input = req.body.input 
+    console.log('req.body/input: ', input);
     models.Posts.create(
         {
-            name: name,
-            input: input,
-            likes: like,
-            date: date,
+            // name: name,
+            input: input.toString(),
+            // likes: like,
+            // date: date,
         }
     )
     .then(data => {
-        console.log(data)
+        console.log('addPostData', data)
         return next();
     })
     .catch(err => console.log(err))
