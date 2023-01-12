@@ -1,0 +1,73 @@
+
+body {
+    background-color: rgb(120, 97, 116);
+    /* background-color: linear-gradient(-60deg, rgb(69, 2, 108), rgb(111, 24, 161), rgb(138, 47, 190), rgb(147, 53, 202), rgb(138, 47, 190), rgb(111, 24, 161), gb(69, 2, 108)) */
+    color: rgb(55, 40, 70);
+    font-family: Verdana, sans-serif;
+}
+
+button {
+    border-radius: 10px;
+    border-color: rgb(103, 84, 172);
+    background-color: rgb(118, 106, 164);
+    font-size: 18px;
+}
+
+.postId {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.post {
+    border: 3px solid rgb(120, 97, 116);
+    border-radius: 25px;
+    /* display: flex; */
+    min-height: 200px;
+    box-shadow: 0px 5px 15px #444;
+    margin: 15px 10px 15px 10px;
+}
+
+.user {
+    margin-top: 2%;
+    margin-left: 5%;
+    font-size: large;
+}
+
+.text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4%;
+    background-color: rgb(143, 116, 138);
+    padding: 10px 10px 10px 15px;
+    border-radius: 15px;
+    margin-left: 10%;
+    margin-right: 10%;
+    box-shadow: 0px 4px 10px #444;
+    /* height: 20px; */
+}
+
+.response {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.msg {
+    height: 40px;
+    width: 200px;
+    font-size: larger;
+}
+
+input {
+    background-color: #999;
+    /* color: #fff; */
+    border-radius: 10px;
+}
+
+.comment {
+    height: 20px;
+    width: 375px;
+}
