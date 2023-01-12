@@ -1,9 +1,9 @@
 import React from 'react';
 import { render } from 'react-dom';
-import App from './App.jsx';
+import Login from './login.jsx';
 import './style.css';
 
 render(
-  <App />,
+  <Login />,
   document.getElementById('root')
 );
