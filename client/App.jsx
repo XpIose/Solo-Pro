@@ -80,6 +80,7 @@ class App extends Component {
             this.setState({ postData: data })
         })
         .catch(err => console.log(err))
+        document.getElementById('' + id._id + '').value = '';
     }
     
 

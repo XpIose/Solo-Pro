@@ -23,7 +23,6 @@ class PostContainer extends Component {
                 comment={this.props.comment}/>
             )
         }
-
         return(
             <div className='postContainer'>
                 {postArr}

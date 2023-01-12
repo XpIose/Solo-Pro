@@ -59,7 +59,7 @@ class Post extends Component {
                 <div className='text'>{this.props.myData.input}</div>
                 <div className='response'>
                     <button className='likePost' onClick={() => this.props.like(this.props.id)} id={this.props.id}>Like: {this.props.myData.likes}</button>
-                    <input type='text' className='comment' id={this.props.myData._id}></input>
+                    <input type='text' className='comment' placeholder='Comments' id={this.props.myData._id}></input>
                     <button className='postComment'  onClick={this.getCommentId}>Add Comment</button>
                 </div>
                 <div className='commentContainer' id='commentContainer'>
