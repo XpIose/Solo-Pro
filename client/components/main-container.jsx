@@ -8,10 +8,6 @@ class MainContainer extends Component {
         super(props);
     }
     render() {
-        // let listArr = []
-        // for (let i = 0; i < x.length; i++) {
-        //     listArr.push('<li><Post/></li>');
-        // }
         return(
             <div>
                 <ul>
@@ -20,7 +16,9 @@ class MainContainer extends Component {
                     testFunc={this.props.testFunc}/>
                     <PostContainer 
                     postData={this.props.postData}
-                    getNewData={this.props.getNewData}/>
+                    getNewData={this.props.getNewData}
+                    like={this.props.like}
+                    delete={this.props.delete}/>
                 </ul>
             </div>
         )

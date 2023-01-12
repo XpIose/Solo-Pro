@@ -15,7 +15,11 @@ class PostContainer extends Component {
         const postArr = [];
         for (let i = 0; i < this.props.postData.length; i++) {
             postArr.unshift(
-                <Post key={i} myData={this.props.postData[i]}/>
+                <Post key={i} 
+                id={this.props.postData[i]} 
+                myData={this.props.postData[i]}
+                like={this.props.like}
+                delete={this.props.delete}/>
             )
         }
 

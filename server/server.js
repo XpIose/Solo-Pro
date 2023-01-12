@@ -42,6 +42,14 @@ app.post('/like',
     res.status(200).json(res.locals.posts)
 });
 
+app.delete('/delete',
+controller.deletePost,
+(req, res) => {
+  console.log('deleting post...')
+  res.status(200).json(res.locals.posts)
+})
+
+
 // app.use('/', (req, res) => {
 //     res.status(200).sendFile(path.join(__dirname, '../index.html'))
 // })

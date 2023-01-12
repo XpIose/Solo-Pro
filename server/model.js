@@ -16,7 +16,7 @@ const Schema = mongoose.Schema;
 
 const postsSchema = new Schema({
     name: { type: String, default: 'username' },
-    input: String,
+    input: { type: String, required: true },
     likes: { type: Number, default: 0 },
     date: { type: Date, default: Date.now},
     comments_id: {

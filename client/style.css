@@ -47,6 +47,7 @@ button {
     box-shadow: 0px 4px 10px #444;
     height: fit-content;
     /* height: 20px; */
+    font-size: x-large;
 }
 
 .response {
@@ -109,4 +110,24 @@ input {
   
   .msg[contenteditable]:empty::before {
     content: "New Poster";
+  }
+
+  .deletePost {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    background-color: rgb(208, 99, 99);
+    /* margin: none; */
+  }
+
+  .info {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .date {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    font-size: small;
   }

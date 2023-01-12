@@ -44,15 +44,27 @@ controller.addPost = (req, res, next) => {
 
 
 controller.likePost = (req, res, next) => {
-    let like;
-    console.log(req, res)
-    models.Posts.updateOne({
-
-    })
+    // console.log('reqquery: ',req.query)
+    // console.log('id: ', req.body._id)
+    const id = req.body._id;
+    const update = req.body.likes += 1;
+    console.log(update)
+    models.Posts.findOneAndUpdate({ _id: id }, { likes: update}, { new: true })
     .then(data => {
-        console.log(data)
+        console.log('retured data: ', data)
         return next();
     })
+    
+}
+
+controller.deletePost = (req, res, next) => {
+    const id = req.body._id;
+    models.Posts.deleteOne({ _id: id })
+    .then(data => {
+        console.log('deleted data: ', data)
+        return next();
+    })
+    // return next();
 }
 
 module.exports = controller;

@@ -7,8 +7,11 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = { postData: 'defaultState'};
+
         this.getNewData = this.getNewData.bind(this);
         this.testFunc = this.testFunc.bind(this);
+        this.like = this.like.bind(this);
+        this.delete = this.delete.bind(this);
     }
     getNewData() {
         fetch('/api')
@@ -19,8 +22,48 @@ class App extends Component {
         })
         .catch(err => console.log(err))
     }
-    like() {
+
+    delete(id) {
+        fetch('/api/delete', { 
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(id),
+        })
+        fetch('/api')
+        .then((res) => res.json())
+        .then((data) => {
+            // console.log(data)
+            this.setState({ postData: data })
+        })
+        .catch(err => console.log(err))
+    }
+
+    like(id) {
         //ping server to update likes
+        // console.log(this.props.id)
+        // console.log(this.state)
+        console.log("id ", id)
+        // let likes = document.getElementById()
+        fetch('/api/like', { 
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(id),
+        })
+        fetch('/api')
+        .then((res) => res.json())
+        .then((data) => {
+            // console.log(data)
+            this.setState({ postData: data })
+        })
+        .catch(err => console.log(err))
+        // .then(res => res.json())
+        // .then(docs => {
+        //     console.log(docs);
+        // })
     }
 
 
@@ -62,7 +105,9 @@ class App extends Component {
                 <MainContainer 
                 postData={this.state.postData}
                 getNewData={this.getNewData}
-                testFunc={this.testFunc}/>
+                testFunc={this.testFunc}
+                like={this.like}
+                delete={this.delete}/>
             </div>
         )
     }
