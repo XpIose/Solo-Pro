@@ -50,6 +50,7 @@ class App extends Component {
         //     this.setState({ postData: data })
         // })
         console.log('message posted');
+        msg = document.getElementById('msg').innerHTML = '';
     }
 
 
