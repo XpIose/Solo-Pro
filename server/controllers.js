@@ -53,8 +53,32 @@ controller.likePost = (req, res, next) => {
     .then(data => {
         console.log('retured data: ', data)
         return next();
+    })   
+}
+
+controller.commentPost = (req, res, next) => {
+    // console.log('reqquery: ',req.query)
+    // console.log('id: ', req.body._id)
+    const id = req.body.id._id;
+    console.log('IDDD:', id)
+    const msg = req.body.msg ;
+    const update = {
+        $push : {
+           comments :  {
+                "text": msg,
+            } //inserted data is the object to be inserted 
+        }
+    }
+    console.log(update)
+    models.Posts.findOneAndUpdate({ _id: id }, update, { new: true })
+    .then(data => {
+        console.log('retured data: ', data)
+        return next();
     })
-    
+    .catch(err => {
+        console.log('comment err: ', err)
+        return next(err)
+    })
 }
 
 controller.deletePost = (req, res, next) => {

@@ -18,7 +18,8 @@ class MainContainer extends Component {
                     postData={this.props.postData}
                     getNewData={this.props.getNewData}
                     like={this.props.like}
-                    delete={this.props.delete}/>
+                    delete={this.props.delete}
+                    comment={this.props.comment}/>
                 </ul>
             </div>
         )

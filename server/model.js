@@ -15,14 +15,21 @@ mongoose.connect(MONGO_URI, {
 const Schema = mongoose.Schema;
 
 const postsSchema = new Schema({
-    name: { type: String, default: 'username' },
+    name: { type: String, default: 'Rylan' }, //username after demo
     input: { type: String, required: true },
     likes: { type: Number, default: 0 },
     date: { type: Date, default: Date.now},
-    comments_id: {
-        type: Schema.Types.ObjectId,
-        ref: 'comments'
-    }
+    // comments_id: {
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'comments'
+    // }
+    
+    comments: [{
+        name: { type: String, default: 'Rylan' }, //username after demo
+        text: { type: String, required: true },
+    }]
+
+
 })
 
 const Posts = mongoose.model('posts', postsSchema);

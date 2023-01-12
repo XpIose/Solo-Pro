@@ -42,6 +42,13 @@ app.post('/like',
     res.status(200).json(res.locals.posts)
 });
 
+app.post('/comment',
+  controller.commentPost,
+  (req, res) => {
+    console.log('updating comments...')
+    res.status(200).json(res.locals.posts)
+});
+
 app.delete('/delete',
 controller.deletePost,
 (req, res) => {

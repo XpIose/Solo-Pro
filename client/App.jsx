@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
 import render from 'react-dom'
 import MainContainer from './components/main-container.jsx'
-// import './style.css';
 
 class App extends Component {
     constructor(props) {
         super(props);
         this.state = { postData: 'defaultState'};
-
         this.getNewData = this.getNewData.bind(this);
         this.testFunc = this.testFunc.bind(this);
         this.like = this.like.bind(this);
         this.delete = this.delete.bind(this);
+        this.comment = this.comment.bind(this);
     }
     getNewData() {
         fetch('/api')
@@ -42,10 +41,7 @@ class App extends Component {
 
     like(id) {
         //ping server to update likes
-        // console.log(this.props.id)
-        // console.log(this.state)
         console.log("id ", id)
-        // let likes = document.getElementById()
         fetch('/api/like', { 
             method: 'POST',
             headers: {
@@ -60,14 +56,32 @@ class App extends Component {
             this.setState({ postData: data })
         })
         .catch(err => console.log(err))
-        // .then(res => res.json())
-        // .then(docs => {
-        //     console.log(docs);
-        // })
     }
 
-
-
+    comment(id) {
+        //ping server to update comments
+        let msg = document.getElementById('' + id._id + '').value
+        console.log('MESSAGE: ', msg)
+        let send = { id: id, msg: msg }//.push(msg.toString())//{ text: msg }
+        console.log('SENDD: ', send)
+        // console.log("COMMENT id ", id)
+        fetch('/api/comment', { 
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(send),
+        })
+        console.log('dont go here yet')
+        fetch('/api')
+        .then((res) => res.json())
+        .then((data) => {
+            console.log('comment data: ', data)
+            this.setState({ postData: data })
+        })
+        .catch(err => console.log(err))
+    }
+    
 
     testFunc = () => {
         let msg = document.getElementById('msg').innerHTML
@@ -87,17 +101,9 @@ class App extends Component {
             this.setState({ postData: data })
         })
         .catch(err => console.log(err))
-        // .then(res => res.json())
-        // .then(data => {
-        //     console.log('testfunc: ', data)
-        //     this.setState({ postData: data })
-        // })
         console.log('message posted');
         msg = document.getElementById('msg').innerHTML = '';
     }
-
-
-
 
     render() {
         return (
@@ -107,7 +113,8 @@ class App extends Component {
                 getNewData={this.getNewData}
                 testFunc={this.testFunc}
                 like={this.like}
-                delete={this.delete}/>
+                delete={this.delete}
+                comment={this.comment}/>
             </div>
         )
     }

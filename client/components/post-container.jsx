@@ -11,7 +11,7 @@ class PostContainer extends Component {
     }
     render() {
 
-        console.log('new state: ', this.props.postData)
+        // console.log('new state: ', this.props.postData)
         const postArr = [];
         for (let i = 0; i < this.props.postData.length; i++) {
             postArr.unshift(
@@ -19,12 +19,13 @@ class PostContainer extends Component {
                 id={this.props.postData[i]} 
                 myData={this.props.postData[i]}
                 like={this.props.like}
-                delete={this.props.delete}/>
+                delete={this.props.delete}
+                comment={this.props.comment}/>
             )
         }
 
         return(
-            <div>
+            <div className='postContainer'>
                 {postArr}
             </div>
         )

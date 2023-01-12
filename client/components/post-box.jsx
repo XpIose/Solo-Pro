@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
+import CommentContainer from './comments-container.jsx';
 
 class Post extends Component {
     constructor(props) {
         super(props);
         this.getId = this.getId.bind(this);
         this.getDeleteId = this.getDeleteId.bind(this);
+        this.getCommentId = this.getCommentId.bind(this);
     }
 
-    getId() {
+    getId() { // USES CALLBACK RIGHT NOW
         // console.log(this.props)
         const id = this.props.id
         // console.log(this.state)
@@ -21,15 +23,30 @@ class Post extends Component {
         this.props.delete(id)
     }
 
-    render() {
-        // var newDate = this.props.myData.date
-        // var year = newDate.getFullYear();
-        // var month = newDate.getMonth() + 1;
-        // var day = newDate.getnewDate();
-        // var hours = newDate.getHours();
-        // var minutes = newDate.getMinutes();
-        // console.log(`${month}/${day}/${year} at ${hours}:${minutes}`)
+    getCommentId() {
+        const id = this.props.id
+        // console.log(this.state)
+        this.props.comment(id)
+    }
 
+    render() {
+
+        const commentsArr = []
+        const arr = this.props.myData.comments
+        if (arr) {
+            console.log('array has length')
+            console.log(arr[0])
+            // console.log('array test:', Array.isArray(arr))
+            // console.log('elemet test:', arr.forEach(el => console.log(el)))
+            for (let i = 0; i < this.props.myData.comments.length; i++){
+            console.log('TESTTESTTESTTESTTEST')
+            commentsArr.unshift(<CommentContainer 
+                // comments={this.props.id.comments} 
+                name={this.props.myData.comments[i].name}
+                text={this.props.myData.comments[i].text}
+                id={i}/>)
+        }
+        }
         return(
             <div className='post'>
                 {/* <div className='user'>@rylan</div> */}
@@ -41,9 +58,13 @@ class Post extends Component {
                 <div className='date'>{this.props.myData.date}</div>
                 <div className='text'>{this.props.myData.input}</div>
                 <div className='response'>
-                    <button className='likePost' onClick={this.getId} id={this.props.id}>Like: {this.props.myData.likes}</button>
-                    <input type='text' className='comment'></input>
-                    <button className='postComment'>Add Comment</button>
+                    <button className='likePost' onClick={() => this.props.like(this.props.id)} id={this.props.id}>Like: {this.props.myData.likes}</button>
+                    <input type='text' className='comment' id={this.props.myData._id}></input>
+                    <button className='postComment'  onClick={this.getCommentId}>Add Comment</button>
+                </div>
+                <div className='commentContainer' id='commentContainer'>
+                    {commentsArr}
+                    <CommentContainer/>
                 </div>
             </div>
         )
