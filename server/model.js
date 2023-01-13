@@ -15,10 +15,11 @@ mongoose.connect(MONGO_URI, {
 const Schema = mongoose.Schema;
 
 const postsSchema = new Schema({
-    name: { type: String, default: 'Rylan' }, //username after demo
+    name: { type: String, default: 'Rylan', required: true}, //username after demo
     input: { type: String, required: true },
     likes: { type: Number, default: 0 },
     date: { type: Date, default: Date.now},
+    pass: { type: String, required: true },
     // comments_id: {
     //     type: Schema.Types.ObjectId,
     //     ref: 'comments'
@@ -28,7 +29,6 @@ const postsSchema = new Schema({
         name: { type: String, default: 'Rylan' }, //username after demo
         text: { type: String, required: true },
     }]
-
 
 })
 

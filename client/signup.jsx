@@ -20,8 +20,8 @@ class Signup extends Component {
             <form className='signin'>
                 <h2>Sign Up</h2>
                 <br/>
-                <label className='username'>E-mail:
-                    <input type='text' required placeholder='foobar@gmail.com'/>
+                <label className='username'>Username:
+                    <input type='text' required placeholder='user name'/>
                 </label>
                 <br/>
                 <label className='password'>Password:
@@ -29,6 +29,7 @@ class Signup extends Component {
                 </label>
                 <br/>
                 <button>Sign Up</button>
+                <Link  to = '/signin'> Sign In </Link>
             </form>
         )
     }

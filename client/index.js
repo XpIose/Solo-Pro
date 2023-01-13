@@ -5,6 +5,6 @@ import App from './App.jsx';
 import './style.css';
 
 render(
-  <App />,
+  <Login />,
   document.getElementById('root')
 );

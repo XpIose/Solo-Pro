@@ -10,7 +10,7 @@ button {
     border-radius: 10px;
     border-color: rgb(103, 84, 172);
     background-color: rgb(118, 106, 164);
-    font-size: 18px;
+    font-size: 15px;
 }
 
 .postId {
@@ -33,7 +33,7 @@ button {
     min-height: 200px;
     box-shadow: 0px 5px 15px #444;
     margin: 15px 10px 15px 10px;
-    max-width: 850px;
+    max-width: 566px;
 }
 
 .user {
