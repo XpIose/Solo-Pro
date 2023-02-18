@@ -27,6 +27,13 @@ connected to db
 ```
 in the terminal
 
-Head over to [localhost](localhost:3000) to see the app running!
+Head over to [localhost:3000](http://localhost:3000) to see the app running!
 
 # Happy Poster-ing!
+---
+# Alternatively, you can also run it in development.
+
+`npm i`
+`npm run dev`
+
+Then head on over to [localhost:8081](http://localhost:8081/)!
