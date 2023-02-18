@@ -12,6 +12,7 @@
 ## Make an account and make a post!
 
 #### Fork or close this repo
+### **You need to add your own [MongoDB](https://www.mongodb.com/atlas/database) DB_URI, I do not provide a public URI**
 In terminal,
 #### `cd` to the cloned directory
 
