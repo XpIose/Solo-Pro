@@ -22,14 +22,12 @@ button {
 .postContainer {
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
     align-items: center;
 }
 
 .post {
     border: 3px solid rgb(120, 97, 116);
     border-radius: 25px;
-    /* display: flex; */
     min-height: 200px;
     box-shadow: 0px 5px 15px #444;
     margin: 15px 10px 15px 10px;
@@ -54,7 +52,6 @@ button {
     margin-right: 10%;
     box-shadow: 0px 4px 10px #444;
     height: fit-content;
-    /* height: 20px; */
     font-size: x-large;
 }
 
@@ -66,23 +63,10 @@ button {
 }
 
 .msg {
-    /* resize: horizontal; */
-    /* height: 40px;
-    width: 200px;
-    font-size: larger; */
     border-radius: 15px;
     background-color: #999;
     border: 1px solid #444;
-    /* border-color: #444; */
 }
-
-/* .msg:active {
-    width: auto;   
-}
-
-.msg:focus {
-    min-width: 200px;
-} */
 
 input {
     background-color: #999;
@@ -96,16 +80,10 @@ input {
 }
 
 .msg {
-    /* border: 1px solid #ccc; */
     font-family: inherit;
     font-size: inherit;
     padding: 1px 6px;
   }
-  
-  
-  /*  .width-machine {
-    padding: 0 1rem;
-  } */
   
   .msg {
     display: block;
@@ -159,11 +137,6 @@ input {
   }
 
   .theComment {
-    /* display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    background-color: aliceblue; */
     font-size: larger;
   }
 

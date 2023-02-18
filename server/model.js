@@ -1,9 +1,12 @@
 const mongoose = require('mongoose');
-// const { post } = require('./router');
+require('dotenv').config();
+const MONGO_URI = process.env.MONGO_URI;
+const MONGO_PASS = process.env.MONGO_PASS;
 
-// const MONGO_URI = 'mongodb+srv://rylan:r7Ih8VCuovW5B82w@cluster1.0okh8un.mongodb.net/?retryWrites=true&w=majority';
-const MONGO_URI = 'mongodb+srv://rylan:r7Ih8VCuovW5B82w@cluster1.0okh8un.mongodb.net/?retryWrites=true&w=majority'
-const MONGO_PASS = 'r7Ih8VCuovW5B82w'
+mongoose.set('useNewUrlParser', true);
+mongoose.set('useFindAndModify', false);
+mongoose.set('useCreateIndex', true);
+
 mongoose.connect(MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -14,33 +17,39 @@ mongoose.connect(MONGO_URI, {
 
 const Schema = mongoose.Schema;
 
+const userSchema = new Schema({
+    user: { type: String, required: true, unique: true},
+    pass: { type: String, required: true},
+    email: { type: String, required: true},
+})
+const Users = mongoose.model('user', userSchema);
+
+
 const postsSchema = new Schema({
-    name: { type: String, default: 'Rylan', required: true}, //username after demo
+    name: { 
+        // type: Schema.Types.ObjectId, 
+        // ref: 'user',
+        type: String,
+        default: 'Rylan', 
+        required: true,
+    }, //username after demo
     input: { type: String, required: true },
     likes: { type: Number, default: 0 },
     date: { type: Date, default: Date.now},
-    pass: { type: String, required: true },
-    // comments_id: {
-    //     type: Schema.Types.ObjectId,
-    //     ref: 'comments'
-    // }
-    
     comments: [{
         name: { type: String, default: 'Rylan' }, //username after demo
         text: { type: String, required: true },
     }]
-
 })
-
 const Posts = mongoose.model('posts', postsSchema);
 
+//depricated comments code
 const commentsSchema = new Schema({
     name: String,
     input: String,
     likes: Number,
     date: String,
 })
-
 const Comments = mongoose.model('comments', commentsSchema);
 
 module.exports = {

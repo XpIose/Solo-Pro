@@ -7,14 +7,11 @@ class CommentContainer extends Component {
         super(props);
     }
     render() {
-
-    
         // if (this.props.name !== undefined) {
             // let name = this.props.name + ":"
         // }
         return(
             <div className='singleComment' id='singleComment'>
-                {/* {this.props.comments.name} */}
                 <div className='commentUser' id='commentUser'>
                     {this.props.name}
                 </div>

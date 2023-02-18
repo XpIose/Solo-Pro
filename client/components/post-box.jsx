@@ -34,17 +34,17 @@ class Post extends Component {
         const commentsArr = []
         const arr = this.props.myData.comments
         if (arr) {
-            console.log('array has length')
-            console.log(arr[0])
+            // console.log('array has length')
+            // console.log(arr[0])
             // console.log('array test:', Array.isArray(arr))
             // console.log('elemet test:', arr.forEach(el => console.log(el)))
             for (let i = 0; i < this.props.myData.comments.length; i++){
-            console.log('TESTTESTTESTTESTTEST')
             commentsArr.unshift(<CommentContainer 
                 // comments={this.props.id.comments} 
                 name={this.props.myData.comments[i].name}
                 text={this.props.myData.comments[i].text}
-                id={i}/>)
+                id={i}
+                key={i}/>)
         }
         }
         return(
@@ -64,7 +64,7 @@ class Post extends Component {
                 </div>
                 <div className='commentContainer' id='commentContainer'>
                     {commentsArr}
-                    <CommentContainer/>
+                    {/* <CommentContainer/> */}
                 </div>
             </div>
         )

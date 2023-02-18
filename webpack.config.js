@@ -1,22 +1,19 @@
 const path = require('path')
 const htmlPlugin = require('html-webpack-plugin');
-// const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-    mode: 'development',
-    // mode: 'production',
-    entry: '/client/index.js',
+    mode: process.env.NODE_ENV,
+    entry: './client/index.js',
     output: {
       path: path.resolve(__dirname, 'dist'),
       filename: 'bundle.js',
+      publicPath: '/',
     },
-    // target: 'web',
     module: {
       rules: [
         {
           test: /\.(js|jsx)$/,
           exclude: /node_modules/,
-          // use: 'babel-loader',
           loader: 'babel-loader',
             options: {
               presets: ["@babel/preset-env", "@babel/preset-react"]
@@ -31,7 +28,7 @@ module.exports = {
     },
     plugins: [
       new htmlPlugin({
-        template: '/index.html',
+        template: './index.html',
       }),
     ],
     devServer: {
@@ -39,15 +36,21 @@ module.exports = {
         directory: path.join(__dirname, 'dist'),
       },
       compress: true,
-      port: 8080, 
+      port: 8081, 
       proxy: {
           '/api': {
             target: 'http://localhost:3000',
             pathRewrite: { '^/api': '' },
             changeOrigin: true,
-            // router: () => 'http://localhost:8080'
         },    
       },
+      historyApiFallback: true,
+    },
+    resolve: {
+      fallback: {
+        "fs": false
+      },
+      extensions: ['.js', '.jsx', '.react.js'],
     },
     devtool: 'eval-source-map',
   };

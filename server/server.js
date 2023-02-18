@@ -2,29 +2,17 @@ const path = require('path');
 const express = require('express');
 const controller = require('./controllers');
 const app = express();
-// const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.use(express.static(path.join(__dirname, '../dist')));
 
-// app.get('/', (req, res) => {
-//   return res.status(200).json('hi rylan')
-// });
-
-app.use('/dist', express.static(path.join(__dirname, '../dist')));
-
-// app.get('/', (req, res) => {
-//   return res.status(200).sendFile(path.join(__dirname, '../index.html'));
-// });
-
-// app.use('/post', './router');
-
-app.get('/',
+app.get('/get',
     controller.getPosts,
     (req, res) => {
         console.log('got db data')
-        // console.log(res.locals.posts)
         res.status(200).json(res.locals.posts)
 });
 
@@ -38,7 +26,7 @@ app.post('/post',
 app.post('/like',
   controller.likePost,
   (req, res) => {
-    console.log('updating posts...')
+    console.log('updating likes...')
     res.status(200).json(res.locals.posts)
 });
 
@@ -54,15 +42,13 @@ controller.deletePost,
 (req, res) => {
   console.log('deleting post...')
   res.status(200).json(res.locals.posts)
-})
-
+});
 
 // app.use('/', (req, res) => {
 //     res.status(200).sendFile(path.join(__dirname, '../index.html'))
 // })
 
 app.use((req, res) => res.status(200).send('page not found'));
-
 
 //err
 app.use((err, req, res, next) => {
@@ -77,5 +63,5 @@ app.use((err, req, res, next) => {
   res.status(errorObj.status).send(JSON.stringify(errorObj.message))
     })
 
-// module.exports = app;
-app.listen(3000);
+app.listen(PORT, () => console.log(`app is listening on port ${PORT}`));
+module.exports = app;

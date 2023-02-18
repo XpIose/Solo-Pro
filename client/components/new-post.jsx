@@ -11,9 +11,7 @@ class WritePost extends Component {
         return(
             <div className='postId'>
                 {/* <input type='text' id="msg" className='msg' size='1'></input> */}
-                
                     <span className="msg" id='msg' role="textbox" contentEditable></span>
-                
                 <button id="send" className='send' onClick={this.props.testFunc}>Post</button>
             </div>
         )

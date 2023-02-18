@@ -13,7 +13,10 @@ class App extends Component {
         this.comment = this.comment.bind(this);
     }
     getNewData() {
-        fetch('/api')
+        const option = process.env.NODE_ENV === 'production' 
+        ? '/get' 
+        : 'api/get'
+        fetch(option)
         .then((res) => res.json())
         .then((data) => {
             // console.log(data)
@@ -23,14 +26,20 @@ class App extends Component {
     }
 
     delete(id) {
-        fetch('/api/delete', { 
+        const option = process.env.NODE_ENV === 'production' 
+        ? '/delete' 
+        : 'api/delete'
+        fetch(option, { 
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(id),
         })
-        fetch('/api')
+        const option2 = process.env.NODE_ENV === 'production' 
+        ? '/get' 
+        : 'api/get'
+        fetch(option2)
         .then((res) => res.json())
         .then((data) => {
             // console.log(data)
@@ -41,15 +50,21 @@ class App extends Component {
 
     like(id) {
         //ping server to update likes
-        console.log("id ", id)
-        fetch('/api/like', { 
+        // console.log("id ", id) //post ID to update
+        const option = process.env.NODE_ENV === 'production' 
+        ? '/like' 
+        : 'api/like'
+        fetch(option, { 
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(id),
         })
-        fetch('/api')
+        const option2 = process.env.NODE_ENV === 'production' 
+        ? '/get' 
+        : 'api/get'
+        fetch(option2)     //update state
         .then((res) => res.json())
         .then((data) => {
             // console.log(data)
@@ -61,19 +76,23 @@ class App extends Component {
     comment(id) {
         //ping server to update comments
         let msg = document.getElementById('' + id._id + '').value
-        console.log('MESSAGE: ', msg)
+        // console.log('MESSAGE: ', msg)
         let send = { id: id, msg: msg }//.push(msg.toString())//{ text: msg }
-        console.log('SENDD: ', send)
-        // console.log("COMMENT id ", id)
-        fetch('/api/comment', { 
+        // console.log('SEND: ', send)
+        const option = process.env.NODE_ENV === 'production' 
+        ? '/comment' 
+        : 'api/comment'
+        fetch(option, { 
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(send),
         })
-        console.log('dont go here yet')
-        fetch('/api')
+        const option2 = process.env.NODE_ENV === 'production' 
+        ? '/get' 
+        : 'api/get'
+        fetch(option2)
         .then((res) => res.json())
         .then((data) => {
             console.log('comment data: ', data)
@@ -86,16 +105,22 @@ class App extends Component {
 
     testFunc = () => {
         let msg = document.getElementById('msg').innerHTML
-        console.log('MESSAGE: ', msg)
+        // console.log('MESSAGE: ', msg)
         let send = { input: msg }
-        fetch('/api/post', { 
+        const option = process.env.NODE_ENV === 'production' 
+        ? '/post' 
+        : 'api/post'
+        fetch(option, { 
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(send),
         })
-        fetch('/api')
+        const option2 = process.env.NODE_ENV === 'production' 
+        ? '/get' 
+        : 'api/get'
+        fetch(option2)
         .then((res) => res.json())
         .then((data) => {
             // console.log(data)

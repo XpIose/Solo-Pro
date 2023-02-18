@@ -10,7 +10,6 @@ class PostContainer extends Component {
         this.props.getNewData();
     }
     render() {
-
         // console.log('new state: ', this.props.postData)
         const postArr = [];
         for (let i = 0; i < this.props.postData.length; i++) {
