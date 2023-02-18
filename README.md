@@ -26,6 +26,7 @@ app is listening on port 3000
 connected to db
 ```
 in the terminal
+
 Head over to [localhost](localhost:3000) to see the app running!
 
-#Happy Poster-ing!
+# Happy Poster-ing!
